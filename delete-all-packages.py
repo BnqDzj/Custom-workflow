@@ -8,7 +8,7 @@ API_URL = "https://api.github.com"
 
 # 获取用户所有包
 def list_packages():
-    url = f"{API_URL}/users/{GITHUB_USERNAME}/packages?package_type=container"
+    url = f"{API_URL}/users/{GITHUB_USERNAME}/packages?package_type=container&per_page=100"
     headers = {
         "Authorization": f"Bearer {GITHUB_TOKEN}",
         "Accept": "application/vnd.github+json"
