@@ -31,6 +31,6 @@ jobs:
 
       - name: run delete-all-packages.py
         env:
-          H_PAT: ${{secrets.H_PAT}}
+          PAT: ${{secrets.PAT}}
         run: |
           python delete-all-packages.py
