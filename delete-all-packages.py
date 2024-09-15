@@ -3,7 +3,7 @@ from urllib.parse import quote
 
 # 配置你的GitHub用户名和token
 GITHUB_USERNAME = "BnqDzj"
-GITHUB_TOKEN = os.environ["H_PAT"]
+GITHUB_TOKEN = os.environ["PAT"]
 API_URL = "https://api.github.com"
 
 # 获取用户所有包
