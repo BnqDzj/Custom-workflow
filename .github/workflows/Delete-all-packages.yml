@@ -1,0 +1,36 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Delete all packages
+
+on:
+  workflow_dispatch:
+
+  repository_dispatch:
+    types: [Delete-all-packages]
+
+jobs:
+  Delete-all-packages:
+    name: Delete all packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+  
+      - name: Set up Python
+        uses: actions/setup-python@main
+        with:
+          python-version: 3
+          check-latest: true
+          allow-prereleases: true
+  
+      - name: Set up requests
+        run: |
+          pip install requests
+
+      - name: run delete-all-packages.py
+        env:
+          H_PAT: ${{secrets.H_PAT}}
+        run: |
+          python delete-all-packages.py
