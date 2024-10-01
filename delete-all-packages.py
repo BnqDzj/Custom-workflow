@@ -1,4 +1,5 @@
 import requests
+import os
 from urllib.parse import quote
 
 # 配置你的GitHub用户名和token
