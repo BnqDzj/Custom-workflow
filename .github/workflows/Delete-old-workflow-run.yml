@@ -31,22 +31,6 @@ jobs:
           retain_days: 0
           keep_minimum_runs: 0
 
-      - name: Delete old workflow run [BsBlog/Sakura_embyboss]
-        uses: Mattraks/delete-workflow-runs@main
-        with:
-          token: ${{secrets.PAT}}
-          repository: BsBlog/Sakura_embyboss
-          retain_days: 0
-          keep_minimum_runs: 0
-
-      - name: Delete old workflow run [BsBlog/docker_python_nogil]
-        uses: Mattraks/delete-workflow-runs@main
-        with:
-          token: ${{secrets.PAT}}
-          repository: BsBlog/docker_python_nogil
-          retain_days: 0
-          keep_minimum_runs: 0
-
       - name: Delete old workflow run
         uses: Mattraks/delete-workflow-runs@main
         with:
