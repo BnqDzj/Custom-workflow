@@ -27,16 +27,19 @@ jobs:
           git remote add upstream https://github.com/alistgo/alist.git
           git fetch upstream
 
-      - name: Reset to upstream/main
+      - name: Sync repo
         run: |
           cd ${{ github.workspace }}/BsBlog/alist
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
           for branch in $(git branch -r | grep '^upstream/' | sed 's/upstream\///'); do
             git checkout $branch
             git reset --hard upstream/$branch
             git push origin $branch --force
           done
+
+      - name: Sync tag
+        run: |
+          cd ${{ github.workspace }}/BsBlog/alist
+          git push origin --tags --force
 
       - name: Delete old workflow run
         uses: Mattraks/delete-workflow-runs@main
