@@ -13,22 +13,34 @@ jobs:
   Repo-Sync:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
-      with:
-        persist-credentials: false
-    - name: Repo Sync
-      uses: repo-sync/github-sync@master
-      with:
-        source_repo: "https://github.com/AlistGo/alist"
-        source_branch: "https://github.com/BsBlog/alist"
-        destination_branch: "*"
-        sync_tags: "*"
-        github_token: ${{ secrets.PAT }}
+      - name: Checkout BsBlog/alist
+        uses: actions/checkout@main
+        with:
+          repository: BsBlog/alist
+          token: ${{ secrets.PAT }} # `GH_PAT` is a secret that contains your PAT
+          path: BsBlog/alist
+          fetch-depth: 0
 
-    - name: Delete old workflow run
-      uses: Mattraks/delete-workflow-runs@main
-      with:
-        token: ${{ github.token }}
-        repository: ${{ github.repository }}
-        retain_days: 0
-        keep_minimum_runs: 0
+      - name: Add upstream
+        run: |
+          cd ${{ github.workspace }}/BsBlog/alist
+          git remote add upstream https://github.com/alistgo/alist.git
+          git fetch upstream
+
+      - name: Reset to upstream/main
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          for branch in $(git branch -r | grep '^upstream/' | sed 's/upstream\///'); do
+            git checkout $branch
+            git reset --hard upstream/$branch
+            git push origin $branch --force
+          done
+
+      - name: Delete old workflow run
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 0
+          keep_minimum_runs: 0
