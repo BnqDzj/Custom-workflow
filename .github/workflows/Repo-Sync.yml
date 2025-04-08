@@ -10,10 +10,13 @@ on:
     types: [Repo-Sync]
 
 jobs:
-  repo-sync:
+  Repo-Sync:
     runs-on: ubuntu-latest
     steps:
-    - name: Repo-Sync
+    - uses: actions/checkout@main
+      with:
+        persist-credentials: false
+    - name: Repo Sync
       uses: repo-sync/github-sync@master
       with:
         source_repo: "https://github.com/AlistGo/alist"
