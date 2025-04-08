@@ -1,0 +1,18 @@
+on:
+  workflow_dispatch:
+
+  repository_dispatch:
+    types: [Repo-Sync]
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Repo-Sync
+      uses: repo-sync/github-sync@master
+      with:
+        source_repo: "https://github.com/AlistGo/alist"
+        source_branch: "https://github.com/BsBlog/alist"
+        destination_branch: "*"
+        sync_tags: "*"
+        github_token: ${{ secrets.PAT }}
