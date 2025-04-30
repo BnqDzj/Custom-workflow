@@ -17,7 +17,7 @@ jobs:
         run: |
           gh repo sync BsBlog/alist --force
         env:
-            GH_TOKEN: ${{ github.token }}
+            GH_TOKEN: ${{ secrets.PAT }}
 
       - name: Delete old workflow run
         uses: Mattraks/delete-workflow-runs@main
