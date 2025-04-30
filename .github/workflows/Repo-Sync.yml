@@ -16,6 +16,8 @@ jobs:
       - name: Sync repo
         run: |
           gh repo sync BsBlog/alist --force
+          gh repo sync BnqDzj/FFmpeg-Builds-nonfree
+          gh repo sync BnqDzj/Cloud189Checkin
         env:
             GH_TOKEN: ${{ secrets.PAT }}
 
