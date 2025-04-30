@@ -13,33 +13,9 @@ jobs:
   Repo-Sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout BsBlog/alist
-        uses: actions/checkout@main
-        with:
-          repository: BsBlog/alist
-          token: ${{ secrets.PAT }} # `GH_PAT` is a secret that contains your PAT
-          path: BsBlog/alist
-          fetch-depth: 0
-
-      - name: Add upstream
-        run: |
-          cd ${{ github.workspace }}/BsBlog/alist
-          git remote add upstream https://github.com/alistgo/alist.git
-          git fetch upstream
-
       - name: Sync repo
         run: |
-          cd ${{ github.workspace }}/BsBlog/alist
-          for branch in $(git branch -r | grep '^upstream/' | sed 's/upstream\///'); do
-            git checkout $branch
-            git reset --hard upstream/$branch
-            git push origin $branch --force
-          done
-
-      - name: Sync tag
-        run: |
-          cd ${{ github.workspace }}/BsBlog/alist
-          git push origin --tags --force
+          gh repo sync BsBlog/alist --force
 
       - name: Delete old workflow run
         uses: Mattraks/delete-workflow-runs@main
