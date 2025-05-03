@@ -23,6 +23,7 @@ jobs:
 
       - name: Delete old workflow run
         uses: Mattraks/delete-workflow-runs@main
+        continue-on-error: true
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
