@@ -18,6 +18,7 @@ jobs:
           gh repo sync BsBlog/alist --force
           gh repo sync BnqDzj/FFmpeg-Builds-nonfree
           gh repo sync BnqDzj/Cloud189Checkin
+          gh repo sync BnqDzj/Sakura_embyboss
         env:
             GH_TOKEN: ${{ secrets.PAT }}
 
