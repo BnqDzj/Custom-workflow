@@ -32,6 +32,7 @@ jobs:
           keep_minimum_runs: 0
 
       - name: Delete old workflow run
+        continue-on-error: true
         uses: Mattraks/delete-workflow-runs@main
         with:
           token: ${{ github.token }}
