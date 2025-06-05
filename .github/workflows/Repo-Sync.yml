@@ -19,7 +19,6 @@ jobs:
           gh repo sync BnqDzj/FFmpeg-Builds-nonfree
           gh repo sync BnqDzj/Cloud189Checkin
           gh repo sync BsBlog/Sakura_embyboss
-          gh repo sync BsBlog/lx-music-api-server
         env:
             GH_TOKEN: ${{ secrets.PAT }}
 
