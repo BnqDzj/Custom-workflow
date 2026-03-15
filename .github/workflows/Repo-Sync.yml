@@ -9,6 +9,9 @@ on:
   repository_dispatch:
     types: [Repo-Sync]
 
+  schedule:
+    - cron: '0/5 * * * *'
+
 jobs:
   Repo-Sync:
     runs-on: ubuntu-latest
