@@ -9,6 +9,9 @@ on:
   repository_dispatch:
     types: [Delete-old-workflow-run]
 
+  schedule:
+    - cron: '0 12 * * *'
+
 jobs:
   Delete-old-workflow-run:
     name: Delete old workflow run
