@@ -18,7 +18,6 @@ jobs:
     steps:
       - name: Sync repo
         run: |
-          gh repo sync BsBlog/alist --force
           gh repo sync BnqDzj/FFmpeg-Builds-nonfree
           gh repo sync BnqDzj/Cloud189Checkin
           gh repo sync BsBlog/Sakura_embyboss
