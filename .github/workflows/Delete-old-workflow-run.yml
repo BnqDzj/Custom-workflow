@@ -15,7 +15,7 @@ on:
 jobs:
   Delete-old-workflow-run:
     name: Delete old workflow run
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Delete old workflow run [BnqDzj/FFmpeg-Builds-nonfree]
