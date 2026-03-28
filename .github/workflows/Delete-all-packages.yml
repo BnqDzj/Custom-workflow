@@ -12,7 +12,7 @@ on:
 jobs:
   Delete-all-packages:
     name: Delete all packages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
 
     steps:
       - name: Checkout
