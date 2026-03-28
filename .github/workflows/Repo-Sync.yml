@@ -14,7 +14,7 @@ on:
 
 jobs:
   Repo-Sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Sync repo
         run: |
